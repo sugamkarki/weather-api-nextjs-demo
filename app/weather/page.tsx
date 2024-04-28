@@ -1,3 +1,4 @@
+"use client";
 import { SignIn, useUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 const Page = () => {
