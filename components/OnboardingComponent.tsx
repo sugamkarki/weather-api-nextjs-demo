@@ -1,20 +1,18 @@
 "use client";
 import { cities } from "@/constants/cities";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "./ui/button";
-import { updateProfile } from "@/lib/actions/weather.action";
+import { getProfile, updateProfile } from "@/lib/actions/weather.action";
 import { useUser } from "@clerk/clerk-react";
 import { useRouter } from "next/navigation";
-const OnboardingComponent = () => {
+const OnboardingComponent = ({ userId }: { userId: string }) => {
   const [city, setCity] = useState("");
   const [error, setError] = useState("");
-  const { user } = useUser();
   const router = useRouter();
-  if (!user) return null;
   const submitHandler = async () => {
     if (!city) return setError("Please select a city");
     const [c, state] = city.split(",");
-    await updateProfile({ city: c, state, userId: user.id });
+    await updateProfile({ city: c, state, userId });
     router.push("/weather");
   };
   return (

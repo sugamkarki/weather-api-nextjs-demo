@@ -7,8 +7,8 @@ const Page = () => {
   if (!user)
     return (
       <div className="w-full h-full flex items-center justify-center">
-        <SignInButton mode="modal" >
-          <Button>Sign In</Button>
+        <SignInButton mode="modal">
+          <Button variant={"destructive"}>Sign In</Button>
         </SignInButton>
       </div>
     );

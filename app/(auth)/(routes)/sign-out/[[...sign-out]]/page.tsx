@@ -1,18 +1,27 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { SignIn, SignInButton, useUser } from "@clerk/nextjs";
+import {
+  SignIn,
+  SignInButton,
+  SignOutButton,
+  SignedIn,
+  useUser,
+} from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 const Page = () => {
-  const { user } = useUser();
-  if (!user)
-    return (
-      <div className="w-full h-full flex items-center justify-center">
-        <SignInButton mode="modal" >
-          <Button>Sign In</Button>
-        </SignInButton>
-      </div>
-    );
-  return redirect("/weather");
+  // const { user } = useUser();
+  // if (user)
+  return (
+    <div className="w-full h-full flex items-center flex-col justify-center">
+      <h1>Do ya really wanna sign out of this awesome app?</h1>
+      <SignedIn>
+        <SignOutButton>
+          <Button variant={"destructive"}>Confirm</Button>
+        </SignOutButton>
+      </SignedIn>
+    </div>
+  );
+  // return redirect("/sign-in");
 };
 
 export default Page;

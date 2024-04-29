@@ -29,10 +29,8 @@ export const updateProfile = async (props: PROFILE_PROPS) => {
     });
   }
 };
-export const getProfile = async () => {
-  const user = await currentUser();
-  if (!user) return null;
+export const getProfile = async (userId: string) => {
   return db.user.findUnique({
-    where: { userId: user.id },
+    where: { userId: userId },
   });
 };
